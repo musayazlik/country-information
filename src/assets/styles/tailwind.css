@@ -9,5 +9,6 @@
 }
 
 body.dark {
-  @apply bg-vdb-dm-bg duration-200;
+  @apply duration-200;
+  background: rgba(32, 45, 54, 255);
 }

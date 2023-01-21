@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Header />
 
-      <div className='container flex flex-col md:flex-row justify-between items-center py-12'>
+      <div className='container flex flex-col gap-10 items-start justify-center md:flex-row md:justify-between md:items-stretch py-12'>
         <Search />
         <FilterDropDown />
       </div>

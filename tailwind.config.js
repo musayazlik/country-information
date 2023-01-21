@@ -9,6 +9,9 @@ module.exports = {
         center: true,
         padding: '1.5rem',
       },
+      boxShadow: {
+        cs: '0 0 4px 0 hsl(0deg 0% 80% / 25%);',
+      },
     },
     colors: {
       // vdb => very dark blue, dm => dark mode, lm => light mode, vlm => very light mode

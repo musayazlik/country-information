@@ -16,7 +16,7 @@ module.exports = {
     colors: {
       // vdb => very dark blue, dm => dark mode, lm => light mode, vlm => very light mode
       'dm-blue': '#0a192f',
-      'vdb-dm-bg': 'hsl(207, 26%, 17%)',
+      'vdb-dm-bg': 'rgba(43,55,67,255)',
       'vdb-lm-text': 'hsl(200, 15%, 8%)',
       'dm-gray': 'hsl(0, 0%, 52%)',
       'vlm-gray': 'hsl(0, 0%, 98%) ',

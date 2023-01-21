@@ -11,7 +11,3 @@
 body.dark {
   @apply bg-vdb-dm-bg duration-200;
 }
-
-body {
-  @apply text-white duration-200;
-}

@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+* {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body.dark {
+  @apply duration-200;
+  background: rgba(32, 45, 54, 255);
+}

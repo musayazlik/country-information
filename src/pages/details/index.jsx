@@ -66,7 +66,7 @@ const Details = () => {
           <h1 className='text-3xl font-bold text-vdb-lm-text dark:text-white mb-6'>
             {data[0]?.name.common}
           </h1>
-          <div className='grid grid-cols-12 gap-x-10 gap-y-6'>
+          <div className=' flex flex-col sm:grid grid-cols-12 gap-x-10 gap-y-6'>
             <div className='col-span-12 lg:col-span-6'>
               <p className='text-vdb-lm-text dark:text-white text-sm mb-2'>
                 <span className='font-bold'>Native Name:</span>{' '}

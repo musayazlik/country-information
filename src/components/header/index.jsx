@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
+/** Icons */
 import { RiMoonLine, RiSunLine } from 'react-icons/ri'
 
 const Header = () => {
+  /** Dark Mode State */
   const [darkMode, setDarkMode] = useState(false)
+
+  /** Dark Mode Actions */
   useEffect(() => {
     const body = document.querySelector('body')
     const darkMode = localStorage.getItem('darkMode')
@@ -23,6 +27,7 @@ const Header = () => {
       setDarkMode(false)
     }
   }
+
   return (
     <header className='bg-white py-6 shadow-cs dark:shadow-dm-blue/50 dark:bg-vdb-dm-bg duration-200 '>
       <div className='container'>

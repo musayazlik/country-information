@@ -19,7 +19,9 @@ const Home = () => {
   /** Data */
   React.useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/all`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/all?fields=name,population,region,flags`
+      )
       .then((res) => {
         dispatch(setCountries(res.data))
       })

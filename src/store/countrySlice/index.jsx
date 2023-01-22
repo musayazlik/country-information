@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   allCountries: [],
   filteredCountries: [],
+  countryDetails: [],
 }
 
 const countrySlice = createSlice({
@@ -18,8 +19,12 @@ const countrySlice = createSlice({
         return country.region === action.payload
       })
     },
+    setCountryDetails: (state, action) => {
+      state.countryDetails = action.payload
+    },
   },
 })
 
-export const { setCountries, setFilteredCountries } = countrySlice.actions
+export const { setCountries, setFilteredCountries, setCountryDetails } =
+  countrySlice.actions
 export default countrySlice.reducer

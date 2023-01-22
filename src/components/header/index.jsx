@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
+/** Icons */
 import { RiMoonLine, RiSunLine } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
+  /** Dark Mode State */
   const [darkMode, setDarkMode] = useState(false)
+
+  /** Dark Mode Actions */
   useEffect(() => {
     const body = document.querySelector('body')
     const darkMode = localStorage.getItem('darkMode')
@@ -23,13 +28,17 @@ const Header = () => {
       setDarkMode(false)
     }
   }
+
   return (
     <header className='bg-white py-6 shadow-cs dark:shadow-dm-blue/50 dark:bg-vdb-dm-bg duration-200 '>
       <div className='container'>
         <div className='flex flex-cols justify-between items-center'>
-          <h1 className='font-extrabold text-sm sm:text-xl text-vdb-lm-text dark:text-white'>
-            Where in the world?
-          </h1>
+          <Link to={'/'}>
+            <h1 className='font-extrabold text-sm sm:text-xl text-vdb-lm-text dark:text-white'>
+              Where in the world?
+            </h1>
+          </Link>
+
           <div
             onClick={() => darkModeStatus()}
             className='text-vdb-lm-text dark:text-white cursor-pointer font-semibold flex justify-center items-center gap-x-2'>

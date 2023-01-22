@@ -1,4 +1,5 @@
 import React from 'react'
+/** Icons */
 import { RiSearchLine } from 'react-icons/ri'
 
 const Search = () => {

@@ -2,17 +2,41 @@
 /* eslint-disable no-undef */
 // @ts-nocheck
 import React from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setPage, prevPage, nextPage } from '../../store/paginationSlice'
+
+/** Pagination Slice */
+import {
+  setPage,
+  prevPage,
+  nextPage,
+  setPerPage,
+} from '../../store/paginationSlice'
 
 const Pagination = () => {
   const dispatch = useDispatch()
+  /** Pagination And Country State Data */
   const pagination = useSelector((state) => state?.pagination)
+  const countryData = useSelector((state) => state?.country)
 
+  /** Set Total Pages */
+  useEffect(() => {
+    if (countryData.filteredCountries.length > 0) {
+      dispatch(setPerPage(countryData.filteredCountries.length))
+    } else {
+      dispatch(setPerPage(countryData.allCountries.length))
+    }
+  }, [
+    countryData.filteredCountries.length,
+    countryData.allCountries.length,
+    dispatch,
+    pagination.pageShowLength,
+  ])
+
+  /** Pagination Number Area */
   const paginationArea = () => {
     const items = []
     let threePoints = true
-    console.log(pagination.totalPages)
     for (let number = 1; number <= pagination.totalPages; number++) {
       if (
         number <= 1 ||
@@ -45,6 +69,7 @@ const Pagination = () => {
     }
     return items
   }
+
   return (
     <>
       <div className='paginationArea w-full'>

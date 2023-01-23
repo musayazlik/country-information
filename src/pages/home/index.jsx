@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       <div className='container flex flex-col sm:grid grid-cols-12 gap-x-8 gap-y-10 mb-20'>
-        {data.filteredCountries.length > 0
+        {data.searchStatus === true
           ? data.filteredCountries
               .slice(
                 (pagination.currentPage - 1) * pagination.pageShowLength,
@@ -79,7 +79,19 @@ const Home = () => {
                 )
               })}
       </div>
-      <Pagination />
+      {data.filteredCountries.length <= 0 &&
+      data.searchStatus === true ? null : (
+        <Pagination />
+      )}
+
+      {data.allCountries.length <= 0 ||
+      (data.filteredCountries.length <= 0 && data.searchStatus === true) ? (
+        <div className='container flex flex-col items-center justify-center'>
+          <p className='text-dm-gray/60 text-lg'>
+            No country with a suitable name was found for the search.
+          </p>
+        </div>
+      ) : null}
     </>
   )
 }

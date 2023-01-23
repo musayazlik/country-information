@@ -21,16 +21,16 @@ const Pagination = () => {
 
   /** Set Total Pages */
   useEffect(() => {
-    if (countryData.filteredCountries.length > 0) {
+    if (countryData.searchStatus === true) {
       dispatch(setPerPage(countryData.filteredCountries.length))
     } else {
       dispatch(setPerPage(countryData.allCountries.length))
     }
   }, [
-    countryData.filteredCountries.length,
-    countryData.allCountries.length,
+    countryData.allCountries,
+    countryData.filteredCountries,
+    countryData.searchStatus,
     dispatch,
-    pagination.pageShowLength,
   ])
 
   /** Pagination Number Area */

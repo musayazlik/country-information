@@ -47,8 +47,10 @@ const Pagination = () => {
         items.push(
           <li
             key={number}
-            className={`page-item ${
-              pagination.currentPage === number ? 'active' : ''
+            className={`page-item px-2 sm:px-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs flex justify-center items-center ${
+              pagination.currentPage === number
+                ? 'bg-vdb-dm-bg text-white border-dm-blue'
+                : ''
             }`}
             onClick={() => {
               dispatch(setPage(number))
@@ -72,10 +74,10 @@ const Pagination = () => {
 
   return (
     <>
-      <div className='paginationArea w-full'>
+      <div className='paginationArea w-full mb-8'>
         <nav aria-label='navigation' className=''>
-          <ul className='pagination flex w-full justify-center '>
-            <li className='page-item previous flex w-auto px-4 py-2 cursor-pointer'>
+          <ul className='pagination flex w-full items-center justify-center gap-x-2 sm:gap-3  '>
+            <li className='page-item next pl-1 pr-1 py-1 sm:pl-2 sm:pr-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
               <a
                 className='page-link flex justify-center items-center'
                 onClick={() => {
@@ -83,8 +85,8 @@ const Pagination = () => {
                 }}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
+                  width='20'
+                  height='20'
                   viewBox='0 0 24 24'
                   fill='none'
                   stroke='currentColor'
@@ -94,23 +96,23 @@ const Pagination = () => {
                   class='feather feather-chevron-left'>
                   <polyline points='15 18 9 12 15 6'></polyline>
                 </svg>
-                <span>Prev</span>
+                <span className='hidden sm:block'>Prev</span>
               </a>
             </li>
 
             {paginationArea()}
 
-            <li className='page-item next px-4 py-2 cursor-pointer'>
+            <li className='page-item next pl-1 pr-1 py-1 sm:pl-2 sm:pr-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
               <a
                 onClick={() => {
                   dispatch(nextPage())
                 }}
                 className='page-link flex justify-center items-center'>
-                <span>Next</span>
+                <span className='hidden sm:block'>Next</span>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  width='24'
-                  height='24'
+                  width='20'
+                  height='20'
                   viewBox='0 0 24 24'
                   fill='none'
                   stroke='currentColor'

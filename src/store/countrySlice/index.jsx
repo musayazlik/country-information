@@ -5,6 +5,7 @@ const initialState = {
   allCountries: [],
   filteredCountries: [],
   countryDetails: [],
+  searchStatus: false,
 }
 
 const countrySlice = createSlice({
@@ -21,6 +22,10 @@ const countrySlice = createSlice({
     },
     setCountryDetails: (state, action) => {
       state.countryDetails = action.payload
+    },
+    setSearch: (state, action) => {
+      state.filteredCountries = action.payload.findData
+      state.searchStatus = action.payload.searchStatus
     },
   },
 })

@@ -42,6 +42,17 @@ const Details = () => {
     }
   }, [data])
 
+  function format(n) {
+    if (n === undefined) return
+    return n
+      .toFixed(2)
+      .replace('.', ',')
+      .replace(/\d{3}(?=(\d{3})*,)/g, function (s) {
+        return '.' + s
+      })
+      .slice(0, -3)
+  }
+
   return (
     <>
       <Header />
@@ -76,7 +87,7 @@ const Details = () => {
               </p>
               <p className='text-vdb-lm-text dark:text-white text-sm mb-2'>
                 <span className='font-bold'>Population:</span>{' '}
-                {data[0]?.population}
+                {format(data[0]?.population)}
               </p>
               <p className='text-vdb-lm-text dark:text-white text-sm mb-2'>
                 <span className='font-bold'>Region:</span> {data[0]?.region}

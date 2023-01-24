@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // @ts-nocheck
 import React from 'react'
 /** Icons */
@@ -11,13 +12,23 @@ const Search = () => {
 
   const handleSearch = (value) => {
     if (value.length > 0) {
-      const findData = data.allCountries.filter((item) => {
-        return item.name.common.toLowerCase().includes(value.toLowerCase())
-      })
-      dispatch({
-        type: 'country/setSearch',
-        payload: { findData, searchStatus: true },
-      })
+      if (data.filteredCountries.length > 0) {
+        const findData = data.filteredCountries.filter((item) => {
+          return item.name.common.toLowerCase().includes(value.toLowerCase())
+        })
+        dispatch({
+          type: 'country/setSearch',
+          payload: { findData, searchStatus: true },
+        })
+      } else {
+        const findData = data.allCountries.filter((item) => {
+          return item.name.common.toLowerCase().includes(value.toLowerCase())
+        })
+        dispatch({
+          type: 'country/setSearch',
+          payload: { findData, searchStatus: true },
+        })
+      }
     } else {
       dispatch({
         type: 'country/setSearch',

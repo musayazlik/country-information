@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       <div className='container flex flex-col sm:grid grid-cols-12 gap-x-8 gap-y-10 mb-20'>
-        {data.searchStatus === true
+        {data.searchStatus === true || data.filteredCountries.length > 0
           ? data.filteredCountries
               .slice(
                 (pagination.currentPage - 1) * pagination.pageShowLength,

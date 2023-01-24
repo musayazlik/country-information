@@ -5,6 +5,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
+
 /** Pagination Slice */
 import {
   setPage,
@@ -21,7 +23,11 @@ const Pagination = () => {
 
   /** Set Total Pages */
   useEffect(() => {
-    if (countryData.searchStatus === true) {
+    if (
+      countryData.searchStatus === true ||
+      (countryData.filteredCountries &&
+        countryData.filteredCountries.length > 0)
+    ) {
       dispatch(setPerPage(countryData.filteredCountries.length))
     } else {
       dispatch(setPerPage(countryData.allCountries.length))
@@ -77,51 +83,27 @@ const Pagination = () => {
       <div className='paginationArea w-full mb-8'>
         <nav aria-label='navigation' className=''>
           <ul className='pagination flex w-full items-center justify-center gap-x-2 sm:gap-3  '>
-            <li className='page-item next pl-1 pr-1 py-1 sm:pl-2 sm:pr-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
+            <li className='page-item next pr-2 pl-1 py-1 sm:pl-2 sm:pr-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
               <a
                 className='page-link flex justify-center items-center'
                 onClick={() => {
                   dispatch(prevPage())
                 }}>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='20'
-                  height='20'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  stroke-width='2'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  class='feather feather-chevron-left'>
-                  <polyline points='15 18 9 12 15 6'></polyline>
-                </svg>
+                <RiArrowLeftSLine fontSize={24} />
                 <span className='hidden sm:block'>Prev</span>
               </a>
             </li>
 
             {paginationArea()}
 
-            <li className='page-item next pl-1 pr-1 py-1 sm:pl-2 sm:pr-4 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
+            <li className='page-item next pr-1 pl-2 py-1 sm:pl-4 sm:pr-2 sm:py-2 cursor-pointer border-2 border-dm-gray/50 text-dm-gray rounded-md shadow-cs hover:bg-dm-gray hover:text-white duration-200'>
               <a
                 onClick={() => {
                   dispatch(nextPage())
                 }}
                 className='page-link flex justify-center items-center'>
                 <span className='hidden sm:block'>Next</span>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='20'
-                  height='20'
-                  viewBox='0 0 24 24'
-                  fill='none'
-                  stroke='currentColor'
-                  stroke-width='2'
-                  stroke-linecap='round'
-                  stroke-linejoin='round'
-                  className='feather feather-chevron-right'>
-                  <polyline points='9 18 15 12 9 6'></polyline>
-                </svg>
+                <RiArrowRightSLine fontSize={24} />
               </a>
             </li>
           </ul>

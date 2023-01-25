@@ -16,9 +16,15 @@ const countrySlice = createSlice({
       state.allCountries = action.payload
     },
     setFilteredCountries: (state, action) => {
-      state.filteredCountries = state.allCountries.filter((country) => {
-        return country.region === action.payload
-      })
+      if (state.filteredCountries > 0) {
+        state.filteredCountries = state.filteredCountries.filter((country) => {
+          return country.region === action.payload
+        })
+      } else {
+        state.filteredCountries = state.allCountries.filter((country) => {
+          return country.region === action.payload
+        })
+      }
     },
     setCountryDetails: (state, action) => {
       state.countryDetails = action.payload

@@ -6,7 +6,6 @@ import { RiSearchLine } from 'react-icons/ri'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Search = () => {
-  const [search, setSearch] = React.useState('')
   const dispatch = useDispatch()
   const data = useSelector((state) => state?.country)
 
@@ -36,8 +35,6 @@ const Search = () => {
       })
     }
   }
-
-  console.log(search)
 
   return (
     <>

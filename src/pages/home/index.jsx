@@ -13,22 +13,21 @@ import Card from '../../components/card'
 import Search from '../../components/search'
 import FilterDropDown from '../../components/filterDropDown'
 import Pagination from '../../components/pagination'
+import { useLoaderData } from 'react-router-dom'
+
+export const CountriesAllLoader = async (params) => {
+  const res = await fetch(
+    `${process.env.REACT_APP_API_URL}/all?fields=name,population,region,flags`
+  )
+  const data = await res.json()
+
+  return { data }
+}
 
 const Home = () => {
   const dispatch = useDispatch()
-  /** Data */
-  React.useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/all?fields=name,population,region,flags`
-      )
-      .then((res) => {
-        dispatch(setCountries(res.data))
-      })
-      .then((err) => {
-        console.log(err)
-      })
-  }, [])
+  const dataCountries = useLoaderData()
+  dispatch(setCountries(dataCountries.data))
 
   const data = useSelector((state) => state?.country)
   const pagination = useSelector((state) => state?.pagination)

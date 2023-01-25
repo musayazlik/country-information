@@ -1,25 +1,38 @@
 // @ts-nocheck
-import Header from '../../components/header'
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setCountryDetails } from '../../store/countrySlice'
+
+/** Components */
+import Header from '../../components/header'
+
+/** React Router Dom */
 import { Link } from 'react-router-dom'
-import { RiArrowLeftLine } from 'react-icons/ri'
 import { useLoaderData } from 'react-router-dom'
+/** Icons */
+import { RiArrowLeftLine } from 'react-icons/ri'
 
 export const CountryDetailsLoader = async ({ params }) => {
+  /** Country Details Fetch */
   const res = await fetch(
     `${process.env.REACT_APP_API_URL}/name/${params.name}?fields=name,population,region,flags,capital,subregion,tld,currencies,languages,borders`
   )
   const dataDetails = await res.json()
-  return dataDetails
+
+  /** Country Border Fetch  */
+  const borderRes = await fetch(
+    `${
+      process.env.REACT_APP_API_URL
+    }/alpha?codes=${dataDetails[0]?.borders?.join(',')}&fields=name`
+  )
+  const borderData = await borderRes.json()
+
+  return { dataDetails, borderData }
 }
 
 const Details = () => {
-  const detail = useLoaderData()
-  const data = detail[0]
+  const { dataDetails, borderData } = useLoaderData()
+  const data = dataDetails[0]
 
-  function format(n) {
+  const format = (n) => {
     if (n === undefined) return
     return n
       .toFixed(2)
@@ -91,14 +104,14 @@ const Details = () => {
                 </p>
               </div>
             </div>
-            {/* <div className='col-span-12 mt-10'>
+            <div className='col-span-12 mt-10'>
               <div className='flex gap-3 items-center flex-wrap'>
                 <h1 className='text-lg font-bold text-vdb-lm-text dark:text-white whitespace-nowrap '>
                   Border Countries:
                 </h1>
 
-                {borders.length >= 1 ? (
-                  borders?.map((border, index) => (
+                {borderData.length >= 1 ? (
+                  borderData?.map((border, index) => (
                     <button
                       key={index}
                       className='shadow-cs text-vdb-lm-text dark:text-white  bg-white dark:bg-vdb-dm-bg dark:shadow-dm-blue/50 cursor-pointer px-5 py-1 font-semibold text-base inline-flex justify-center items-center gap-x-3 rounded-md whitespace-nowrap'>
@@ -111,7 +124,7 @@ const Details = () => {
                   </p>
                 )}
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

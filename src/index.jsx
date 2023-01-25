@@ -10,15 +10,19 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/home'
 import Details from './pages/details'
+import { CountriesAllLoader } from './pages/home'
+import { CountryDetailsLoader } from './pages/details'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    loader: CountriesAllLoader,
   },
   {
     path: '/details/:name',
     element: <Details />,
+    loader: CountryDetailsLoader,
   },
 ])
 

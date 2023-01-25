@@ -2,6 +2,7 @@ import React from 'react'
 /** State Data */
 import { useDispatch } from 'react-redux'
 import { setFilteredCountries } from '../../store/countrySlice'
+import { setPage } from '../../store/paginationSlice'
 /** Icons */
 import { RiArrowDownSLine } from 'react-icons/ri'
 
@@ -19,6 +20,7 @@ const FilterDropDown = () => {
             className='flex flex-row justify-between items-center last:mb-0 hover:scale-105 duration-200'
             onClick={() => {
               dispatch(setFilteredCountries('Africa'))
+              dispatch(setPage(1))
             }}>
             <p className='ml-2'>Africa</p>
           </div>
@@ -26,6 +28,7 @@ const FilterDropDown = () => {
             className='flex flex-row justify-between items-center last:mb-0 hover:scale-105 duration-200'
             onClick={() => {
               dispatch(setFilteredCountries('Americas'))
+              dispatch(setPage(1))
             }}>
             <p className='ml-2'>America</p>
           </div>
@@ -33,6 +36,7 @@ const FilterDropDown = () => {
             className='flex flex-row justify-between items-center last:mb-0 hover:scale-105 duration-200'
             onClick={() => {
               dispatch(setFilteredCountries('Asia'))
+              dispatch(setPage(1))
             }}>
             <p className='ml-2'>Asia</p>
           </div>
@@ -40,6 +44,7 @@ const FilterDropDown = () => {
             className='flex flex-row justify-between items-center last:mb-0 hover:scale-105 duration-200'
             onClick={() => {
               dispatch(setFilteredCountries('Europe'))
+              dispatch(setPage(1))
             }}>
             <p className='ml-2'>Europe</p>
           </div>
@@ -47,6 +52,7 @@ const FilterDropDown = () => {
             className='flex flex-row justify-between items-center last:mb-0 hover:scale-105 duration-200'
             onClick={() => {
               dispatch(setFilteredCountries('Oceania'))
+              dispatch(setPage(1))
             }}>
             <p className='ml-2'>Oceania</p>
           </div>

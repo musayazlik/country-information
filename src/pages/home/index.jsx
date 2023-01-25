@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 import React from 'react'
-import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 
 /** Country Slice */
@@ -20,7 +19,6 @@ export const CountriesAllLoader = async (params) => {
     `${process.env.REACT_APP_API_URL}/all?fields=name,population,region,flags`
   )
   const data = await res.json()
-
   return { data }
 }
 

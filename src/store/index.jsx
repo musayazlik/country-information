@@ -9,7 +9,6 @@ const store = configureStore({
     country: countrySlice,
     pagination: paginationSlice,
   },
-  middleware: [thunk, logger],
 })
 
 export default store
